@@ -44,14 +44,15 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 10,
-        elevation: 3,
+        elevation: 5,
         justifyContent: "flex-end",
         alignItems: "flex-end",
     },
     title: {
         fontFamily: "open-sans-bold",
-        fontSize: 22,
+        fontSize: 20,
         textAlign: "right",
+        padding: 10,
     },
 });
 
