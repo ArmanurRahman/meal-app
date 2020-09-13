@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTiles from "../components/CategoryGridTiles";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderIcon from "../components/HeaderIcon";
 
 const CategoryScreen = (props) => {
     const renderItem = (itemdata) => {
@@ -35,8 +37,21 @@ const CategoryScreen = (props) => {
     );
 };
 
-CategoryScreen.navigationOptions = {
-    headerTitle: "Meal Categories",
+CategoryScreen.navigationOptions = (navdata) => {
+    return {
+        headerTitle: "Meal Categories",
+        headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderIcon}>
+                <Item
+                    title='menu'
+                    iconName='ios-menu'
+                    onPress={() => {
+                        navdata.navigation.toggleDrawer();
+                    }}
+                />
+            </HeaderButtons>
+        ),
+    };
 };
 
 const styles = StyleSheet.create({

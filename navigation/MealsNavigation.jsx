@@ -10,6 +10,8 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import FavouriteScreen from "../screens/FavouriteScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import { createDrawerNavigator } from "react-navigation-drawer";
+import FilterScreen from "../screens/FilterScreen";
 
 const defaultHeaderOption = {
     defaultNavigationOptions: {
@@ -80,4 +82,30 @@ const MealFavTabNavigation =
                   activeTintColor: Color.accenColor,
               },
           });
-export default createAppContainer(MealFavTabNavigation);
+
+const filterNavigation = createStackNavigator(
+    {
+        Filters: FilterScreen,
+    },
+    defaultHeaderOption
+);
+const mainNavigation = createDrawerNavigator(
+    {
+        mealsFav: {
+            screen: MealFavTabNavigation,
+            navigationOptions: {
+                drawerLabel: "Meals",
+            },
+        },
+        Filters: filterNavigation,
+    },
+    {
+        contentOptions: {
+            activeTintColor: Color.accenColor,
+            labelStyle: {
+                fontFamily: "open-sans-bold",
+            },
+        },
+    }
+);
+export default createAppContainer(mainNavigation);
