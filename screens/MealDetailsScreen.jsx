@@ -7,7 +7,7 @@ import HeaderIcon from "../components/HeaderIcon";
 const ListItem = (props) => {
     return (
         <View style={styles.listItem}>
-            <Text key={props.children}>{props.children}</Text>
+            <Text>{props.children}</Text>
         </View>
     );
 };
@@ -34,12 +34,12 @@ const MealDetailScreen = (props) => {
                 <Text style={styles.title}>Ingredients</Text>
 
                 {selectedMeal.ingredients.map((ingredian) => {
-                    return <ListItem>{ingredian}</ListItem>;
+                    return <ListItem key={ingredian}>{ingredian}</ListItem>;
                 })}
                 <Text style={styles.title}>Steps</Text>
 
                 {selectedMeal.steps.map((step) => {
-                    return <ListItem>{step}</ListItem>;
+                    return <ListItem key={step}>{step}</ListItem>;
                 })}
             </View>
         </ScrollView>
